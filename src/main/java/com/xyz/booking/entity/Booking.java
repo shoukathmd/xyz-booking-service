@@ -1,5 +1,6 @@
 package com.xyz.booking.entity;
 
+import com.xyz.booking.entity.base.AuditEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,11 +13,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Booking {
+public class Booking extends AuditEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     // Reference to Show
     @ManyToOne(fetch = FetchType.LAZY)

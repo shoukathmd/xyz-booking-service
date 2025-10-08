@@ -171,7 +171,7 @@ docker run -p 8080:8080 booking-service
 ## 💾 Database & Transactions
 
 - ACID transactions managed via `@Transactional`
-- Optimistic locking using `@Version` for booking concurrency
+- Optimistic locking using `` for booking concurrency
 - Isolation levels configurable for critical operations
 - Validation handled via `javax.validation` (`@NotNull`, `@Size`, etc.)
 
@@ -183,13 +183,25 @@ docker run -p 8080:8080 booking-service
 |----------|----------------|
 | **Logging** | SLF4J + optional AOP logging |
 | **Error Handling** | Global `@ControllerAdvice` |
-| **Security** | JWT + RBAC + ABAC |
-| **Validation** | `@Valid` annotations + custom validators |
-| **Transactions** | Managed by Spring’s `@Transactional` |
-| **Observability** | Spring Boot Actuator |
-| **Documentation** | OpenAPI / Swagger (optional) |
+| **Security** | JWT-based authentication with RBAC (role checks) and ABAC (attribute-based access control) |
+| **Validation** | `@Valid` annotations + custom validators for input sanitization |
+| **Transactions** | Managed by Spring’s `@Transactional` (supports ACID compliance) |
+| **Observability** | Spring Boot Actuator for health, metrics, and tracing |
+| **Entity Auditing** | Entities extend `AuditEntity` for automatic `createdBy`, `createdDate`, `modifiedBy`, and `modifiedDate` tracking |
+| **Multi-Tenancy (ABAC Ready)** | Extend `AuditEntity` with `tenantId` or `partnerId` for attribute-based access control and tenant isolation |
+| **Documentation** | OpenAPI / Swagger integration (optional) |
 
 ---
+
+### 🧾 Entity Auditing
+
+- All entities inherit from `AuditEntity`, which extends `BasicBaseEntity`.
+- Automatically tracks:
+    - `createdBy`, `createdDate`, `modifiedBy`, `modifiedDate`
+- Powered by Spring Data JPA Auditing (`@CreatedBy`, `@LastModifiedBy`, etc.).
+- Integrated with `AuditorAware` to populate user or tenant from Security Context (e.g., JWT claims).
+- Provides a foundation for **ABAC enforcement** and **audit logging** across all data changes.
+
 
 ## 🧪 Testing Strategy
 

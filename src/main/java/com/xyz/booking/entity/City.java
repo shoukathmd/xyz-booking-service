@@ -1,5 +1,6 @@
 package com.xyz.booking.entity;
 
+import com.xyz.booking.entity.base.AuditEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,10 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class City {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class City extends AuditEntity {
+
 
     @Column(nullable = false, unique = true)
     private String name;
