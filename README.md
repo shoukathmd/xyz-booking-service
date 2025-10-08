@@ -216,15 +216,3 @@ docker run -p 8080:8080 booking-service
 
 ---
 
-## 📘 References
-
-- [Google Engineering Practices](https://google.github.io/eng-practices/review/)
-- [Clean Code – Robert C. Martin](https://www.oreilly.com/library/view/clean-code/9780136083238/)
-- [OWASP Top 10](https://owasp.org/www-project-top-ten/)
-- [Designing Data-Intensive Applications – Martin Kleppmann](https://dataintensive.net/)
-- [Spring Boot Actuator Docs](https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html)
-
----
-
-📄 **License**  
-This project is licensed under the MIT License – feel free to modify and use responsibly.
